@@ -7,33 +7,40 @@ import seaborn as sns
 import plotly.express as px
 acdata=pd.read_csv("Accidents0514.csv", low_memory=False)
 acdata.head()
-Accident_Index	Location_Easting_OSGR	Location_Northing_OSGR	Longitude	Latitude	Police_Force	Accident_Severity	Number_of_Vehicles	Number_of_Casualties	Date	...	Pedestrian_Crossing-Human_Control	Pedestrian_Crossing-Physical_Facilities	Light_Conditions	Weather_Conditions	Road_Surface_Conditions	Special_Conditions_at_Site	Carriageway_Hazards	Urban_or_Rural_Area	Did_Police_Officer_Attend_Scene_of_Accident	LSOA_of_Accident_Location
+
+'''Accident_Index	Location_Easting_OSGR	Location_Northing_OSGR	Longitude	Latitude	Police_Force	Accident_Severity	Number_of_Vehicles	Number_of_Casualties	Date	...	Pedestrian_Crossing-Human_Control	Pedestrian_Crossing-Physical_Facilities	Light_Conditions	Weather_Conditions	Road_Surface_Conditions	Special_Conditions_at_Site	Carriageway_Hazards	Urban_or_Rural_Area	Did_Police_Officer_Attend_Scene_of_Accident	LSOA_of_Accident_Location
 0	200501BS00001	525680.0	178240.0	-0.191170	51.489096	1	2	1	1	04/01/2005	...	0	1	1	2	2	0	0	1	1	E01002849
 1	200501BS00002	524170.0	181650.0	-0.211708	51.520075	1	3	1	1	05/01/2005	...	0	5	4	1	1	0	0	1	1	E01002909
 2	200501BS00003	524520.0	182240.0	-0.206458	51.525301	1	3	2	1	06/01/2005	...	0	0	4	1	1	0	0	1	1	E01002857
 3	200501BS00004	526900.0	177530.0	-0.173862	51.482442	1	3	1	1	07/01/2005	...	0	0	1	1	1	0	0	1	1	E01002840
 4	200501BS00005	528060.0	179040.0	-0.156618	51.495752	1	3	1	1	10/01/2005	...	0	0	7	1	2	0	0	1	1	E01002863
-5 rows × 32 columns
+5 rows × 32 columns'''
 
 casdata=pd.read_csv("Casualties0514.csv")
 casdata.head()
-Accident_Index	Vehicle_Reference	Casualty_Reference	Casualty_Class	Sex_of_Casualty	Age_of_Casualty	Age_Band_of_Casualty	Casualty_Severity	Pedestrian_Location	Pedestrian_Movement	Car_Passenger	Bus_or_Coach_Passenger	Pedestrian_Road_Maintenance_Worker	Casualty_Type	Casualty_Home_Area_Type
+
+'''Accident_Index	Vehicle_Reference	Casualty_Reference	Casualty_Class	Sex_of_Casualty	Age_of_Casualty	Age_Band_of_Casualty	Casualty_Severity	Pedestrian_Location	Pedestrian_Movement	Car_Passenger	Bus_or_Coach_Passenger	Pedestrian_Road_Maintenance_Worker	Casualty_Type	Casualty_Home_Area_Type
 0	200501BS00001	1	1	3	1	37	7	2	1	1	0	0	-1	0	1
 1	200501BS00002	1	1	2	1	37	7	3	0	0	0	4	-1	11	1
 2	200501BS00003	2	1	1	1	62	9	3	0	0	0	0	-1	9	1
 3	200501BS00004	1	1	3	1	30	6	3	5	2	0	0	-1	0	1
 4	200501BS00005	1	1	1	1	49	8	3	0	0	0	0	-1	3	-1
+'''
+
 vehdata=pd.read_csv("Vehicles0514.csv")
 vehdata.head()
-Accident_Index	Vehicle_Reference	Vehicle_Type	Towing_and_Articulation	Vehicle_Manoeuvre	Vehicle_Location-Restricted_Lane	Junction_Location	Skidding_and_Overturning	Hit_Object_in_Carriageway	Vehicle_Leaving_Carriageway	...	Was_Vehicle_Left_Hand_Drive?	Journey_Purpose_of_Driver	Sex_of_Driver	Age_of_Driver	Age_Band_of_Driver	Engine_Capacity_(CC)	Propulsion_Code	Age_of_Vehicle	Driver_IMD_Decile	Driver_Home_Area_Type
+
+'''Accident_Index	Vehicle_Reference	Vehicle_Type	Towing_and_Articulation	Vehicle_Manoeuvre	Vehicle_Location-Restricted_Lane	Junction_Location	Skidding_and_Overturning	Hit_Object_in_Carriageway	Vehicle_Leaving_Carriageway	...	Was_Vehicle_Left_Hand_Drive?	Journey_Purpose_of_Driver	Sex_of_Driver	Age_of_Driver	Age_Band_of_Driver	Engine_Capacity_(CC)	Propulsion_Code	Age_of_Vehicle	Driver_IMD_Decile	Driver_Home_Area_Type
 0	200501BS00001	1	9	0	18	0	0	0	0	0	...	1	15	2	74	10	-1	-1	-1	7	1
 1	200501BS00002	1	11	0	4	0	3	0	0	0	...	1	1	1	42	7	8268	2	3	-1	-1
 2	200501BS00003	1	11	0	17	0	0	0	4	0	...	1	1	1	35	6	8300	2	5	2	1
 3	200501BS00003	2	9	0	2	0	0	0	0	0	...	1	15	1	62	9	1762	1	6	1	1
 4	200501BS00004	1	9	0	18	0	0	0	0	0	...	1	15	2	49	8	1769	1	4	2	1
 5 rows × 22 columns
+'''
 
 acdata.dtypes
+'''
 Accident_Index                                  object
 Location_Easting_OSGR                          float64
 Location_Northing_OSGR                         float64
@@ -67,7 +74,10 @@ Urban_or_Rural_Area                              int64
 Did_Police_Officer_Attend_Scene_of_Accident      int64
 LSOA_of_Accident_Location                       object
 dtype: object
+'''
+
 casdata.dtypes
+'''
 Accident_Index                        object
 Vehicle_Reference                      int64
 Casualty_Reference                     int64
@@ -84,7 +94,10 @@ Pedestrian_Road_Maintenance_Worker     int64
 Casualty_Type                          int64
 Casualty_Home_Area_Type                int64
 dtype: object
+'''
+
 vehdata.dtypes
+'''
 Accident_Index                      object
 Vehicle_Reference                    int64
 Vehicle_Type                         int64
@@ -107,7 +120,8 @@ Propulsion_Code                      int64
 Age_of_Vehicle                       int64
 Driver_IMD_Decile                    int64
 Driver_Home_Area_Type                int64
-dtype: object
+dtype: object'''
+
 ## Visualisation of number of Accidents over the years
 acdata['Year']=acdata['Accident_Index'].map(lambda x: str(x)[:4])
 acdata['Year']=acdata['Year'].apply(pd.to_numeric, errors='coerce')
@@ -271,12 +285,14 @@ for i in range(1,11):
         monl.append(j)
 dfn=pd.DataFrame(list(zip(yrl,monl,acci)),columns=['Year','Month','No_of_Accidents'])
 dfn.head()
+'''
 Year	Month	No_of_Accidents
 0	2005	Jan	16278
 1	2005	Feb	14521
 2	2005	Mar	14977
 3	2005	Apr	15661
 4	2005	May	17032
+'''
 yrtp= dfn['Year'].unique()
 f=plt.figure(figsize=(16,12), dpi= 80)
 f.set_figwidth(9)
@@ -309,23 +325,27 @@ dfbp=pd.DataFrame(data=vehdata, columns=['Vehicle_Reference','Sex_of_Driver','Ag
                                         'Driver_Home_Area_Type','Journey_Purpose_of_Driver'])
 dfbp=dfbp[dfbp.Sex_of_Driver !=-1]
 dfbp.head()
+'''
 Vehicle_Reference	Sex_of_Driver	Age_of_Driver	Age_Band_of_Driver	Driver_Home_Area_Type	Journey_Purpose_of_Driver
 0	1	2	74	10	1	15
 1	1	1	42	7	-1	1
 2	1	1	35	6	1	1
 3	2	1	62	9	1	15
 4	1	2	49	8	1	15
+'''
 dfbp.Driver_Home_Area_Type=dfbp.Driver_Home_Area_Type.map(drivarea)
 dfbp.Age_Band_of_Driver=dfbp.Age_Band_of_Driver.map(drivage)
 dfbp.Sex_of_Driver=dfbp.Sex_of_Driver.map(drivgen)
 dfbp.Journey_Purpose_of_Driver=dfbp.Journey_Purpose_of_Driver.map(purpose)
 dfbp.head()
+'''
 Vehicle_Reference	Sex_of_Driver	Age_of_Driver	Age_Band_of_Driver	Driver_Home_Area_Type	Journey_Purpose_of_Driver
 0	1	Female	74	66 - 75	Urban Area	Not known/Other
 1	1	Male	42	36 - 45	NaN	Journey as part of work
 2	1	Male	35	26 - 35	Urban Area	Journey as part of work
 3	2	Male	62	56 - 65	Urban Area	Not known/Other
 4	1	Female	49	46 - 55	Urban Area	Not known/Other
+'''
 plt.figure(figsize=(20,7))
 sns.boxplot(x='Journey_Purpose_of_Driver',y='Age_of_Driver',data=dfbp)
 plt.show()
@@ -353,21 +373,25 @@ dfs=dfs[dfs.Vehicle_Type!=-1]
 dfs=dfs[dfs.Age_of_Vehicle!=-1]
 dfs=dfs[dfs['Engine_Capacity_(CC)']!=-1]
 dfs.head()
+'''
 Vehicle_Reference	Vehicle_Type	Age_of_Vehicle	Engine_Capacity_(CC)	Propulsion_Code
 1	1	11	3	8268	2
 2	1	11	5	8300	2
 3	2	9	6	1762	1
 4	1	9	4	1769	1
 5	1	3	10	85	1
+'''
 dfs['Vehicle_Type']=dfs.Vehicle_Type.map(vehtype)
 dfs['Propulsion_Code']=dfs.Propulsion_Code.map(propcode)
 dfs.head()
+'''
 Vehicle_Reference	Vehicle_Type	Age_of_Vehicle	Engine_Capacity_(CC)	Propulsion_Code
 1	1	Bus or coach (17 or more pass seats)	3	8268	Heavy oil
 2	1	Bus or coach (17 or more pass seats)	5	8300	Heavy oil
 3	2	Car	6	1762	Petrol
 4	1	Car	4	1769	Petrol
 5	1	Motorcycle 125cc and under	10	85	Petrol
+'''
 sns.catplot(x="Vehicle_Type",y="Engine_Capacity_(CC)",data=dfs)
 plt.xticks(rotation ='vertical')
 plt.show()
@@ -382,12 +406,16 @@ dfc=pd.DataFrame(data=casdata, columns=['Sex_of_Casualty','Age_of_Casualty','Age
 dfc=dfc[dfc.Sex_of_Casualty !=-1]
 dfc=dfc[dfc.Age_of_Casualty !=-1]
 dfc.head()
+
+'''
 Sex_of_Casualty	Age_of_Casualty	Age_Band_of_Casualty	Casualty_Severity	Pedestrian_Location	Casualty_Class	Casualty_Home_Area_Type
 0	1	37	7	2	1	3	1
 1	1	37	7	3	0	2	1
 2	1	62	9	3	0	1	1
 3	1	30	6	3	5	3	1
 4	1	49	8	3	0	1	-1
+'''
+
 casage={1:'0 - 5',2:'6 - 10',3:'11 - 15',4:'16 - 20',5:'21 - 25',6:'26 - 35',7:'36 - 45',8:'46 - 55',
             9:'56 - 65',10:'66 - 75',11:'Over 75'}
 casarea={1:'Urban Area',2:'Small Town',3:'Rural'}
@@ -400,16 +428,21 @@ dfc.Age_Band_of_Casualty=dfc.Age_Band_of_Casualty.map(casage)
 dfc.Casualty_Severity=dfc.Casualty_Severity.map(cassev)
 dfc.Casualty_Class=dfc.Casualty_Class.map(casclass)
 dfc.head()
+
+'''
 Sex_of_Casualty	Age_of_Casualty	Age_Band_of_Casualty	Casualty_Severity	Pedestrian_Location	Casualty_Class	Casualty_Home_Area_Type
 0	Male	37	36 - 45	Serious	1	Pedestrian	Urban Area
 1	Male	37	36 - 45	Slight	0	Passenger	Urban Area
 2	Male	62	56 - 65	Slight	0	Driver/Rider	Urban Area
 3	Male	30	26 - 35	Slight	5	Pedestrian	Urban Area
 4	Male	49	46 - 55	Slight	0	Driver/Rider	NaN
+'''
+
 fig = px.histogram(dfc, x='Age_of_Casualty',marginal = 'box')
 fig.show()
 fig=px.box(dfc,x='Sex_of_Casualty',y='Age_of_Casualty',color='Casualty_Severity')
 fig.show()
+
 ## Point Plot
 ax = sns.catplot(x='Casualty_Home_Area_Type',y='Age_of_Casualty',hue='Casualty_Class',kind='point',data=dfc)
 plt.savefig('output.png', dpi=300, bbox_inches='tight')
